@@ -1,0 +1,211 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!--internal styling-->
+<style>
+/* Base Styles (Desktop) */
+.header-container {
+    width: 100%;
+    height: 40vh;
+    display: block;
+    background-image: url("/images/about-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+.header-container h1 {
+    text-align: center;
+    margin-top: 8rem;
+}
+    .footer-container {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        color: white;
+        background-color: black;
+        width: 100%;
+        height: 40vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+    }
+    .footer-icons a {
+            color: white;
+    }
+    .footer-icons a:hover i {
+                font-size: 25px;
+                transition: 0.3s;
+                color: red;
+    }
+.info-container{
+    width: 100%;
+    height: 40vh; 
+    margin-top: 4rem;
+    background-color: white;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+}
+.info-content{
+    width: 25%; 
+    height: 40vh; 
+    background-color: white;
+    margin: 0 2.5%; 
+    padding: 10px;
+}
+.info-content p:hover{
+    color: red;
+}
+
+/* clickable email */
+.info-content a {
+    color: black; 
+    text-decoration: none;
+    transition: 0.3s;
+}
+.info-content a:hover {
+    color: red; 
+    text-decoration: none; 
+}
+.info-content p:hover{
+    color: black; 
+}
+.map{
+    margin: 3rem auto; 
+    width: 80%;
+    height: 40vh;
+    background-color: white;
+    border-radius:10px;
+    justify-content: center;
+}
+.map iframe{
+    width: 100%;
+    height: 40vh;
+    border-radius: 10px;
+    transition: 1s;
+}
+.map iframe:hover{
+    height: 45vh;
+    transition: 1s;
+}
+/*mobile responsiveness*/
+@@media (max-width: 992px) { 
+    .header-container h1 {
+        margin-top: 6rem;
+    }
+    .info-container{
+        flex-direction: column; 
+        height: auto;
+    }
+    .info-content{
+        width: 90%; 
+        height: auto; 
+        margin: 15px auto; 
+        padding: 20px;
+        border: 1px solid #eee; 
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .info-content h2, 
+    .info-content p {
+        text-align: center;
+    }
+    .info-content a {
+        display: block; 
+        text-align: center;
+    }
+    .map{
+        width: 90%; 
+        height: 35vh;
+        margin: 2rem auto;
+    }
+    .map iframe{
+        height: 35vh; 
+    }
+    .footer-container{
+        margin-top: 3rem;
+        height: auto;
+    }
+}
+</style>
+
+<!--header section-->
+<div class="header-container">
+    <!--menu link-->
+    @Html.Partial("_menu")
+    <h1>Contact Us</h1>
+</div>
+
+<!--contact info section-->
+<div class="info-container">
+    <div class="info-content">
+        <h2>Contact Information</h2>
+        <p>
+            Chabis Hotness (Pty) Limited<br />
+            2544 RAMOLOPE SECTION (next to Molate shop),<br /> MORULENG, SAULSPOORT RUSTENBURG REGION<br />SOUTH AFRICA
+        </p>  
+        <p>
+           <a href="tel:+27625805348">(+27) 62 580 5348</a><br />
+           <a href="mailto:info@chabishotness.com">info@chabishotness.com</a><br />
+           <a href="mailto:sales@chabishotness.com">sales@chabishotness.com</a><br />
+           <a href="http://www.chabishotness.com" target="_blank">www.chabishotness.com</a>
+        </P>
+
+
+    </div>
+    <div class="info-content">
+        <h2>Trading Hours :</h2>
+        <p>
+            Mon – Fri (08:00am – 18:00pm)
+        </p>
+        <p>
+            Sat (09:00am – 17:00pm)
+        </p>
+        <p>
+            Sun (09:00am – 12:00pm)
+        </p>
+    </div>
+    <div class="info-content">
+        <h2>Sales Agents locations:</h2>
+        <h2>Sauces available in the following Stores:</h2>
+    </div>
+</div><br />
+
+<!--map section-->
+<div class="map">
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.0215329995295!2d27.17645306951973!3d-25.17635018490393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ebe810da800c1e9%3A0x6e7374eb9f3b3aac!2sMolate%20general%20dealer!5e1!3m2!1sen!2sza!4v1725831098892!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        
+</div>
+
+<!--footer section-->
+<div class="footer-container">
+    <h2>About Us</h2>
+    <p>
+        Chabis Hotness,<br />
+        Stirring up bold flavors and fiery passion in every jar—taste the difference with our chillies..
+    </p>
+    <div class="footer-icons">
+        <a href="https://www.facebook.com/mmadichabasharolmolate" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/chabis.hotness" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/+27625805348" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <p>copyright <i class="fa fa-copyright" style="font-size:15px;color:#ffffff;"></i> 2024, Chabis Hotness | Created by SyreTech SOLUTIONS</p>
+</div>

@@ -1,0 +1,40 @@
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\appsettings.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.staticwebassets.runtime.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.staticwebassets.endpoints.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.exe
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.deps.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.runtimeconfig.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Chabis Hotness(PTY)Ltd.pdb
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.csproj.AssemblyReference.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.AssemblyInfoInputs.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.AssemblyInfo.cs
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.csproj.CoreCompileInputs.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.RazorAssemblyInfo.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.RazorAssemblyInfo.cs
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\scopedcss\bundle\Chabis Hotness(PTY)Ltd.styles.css
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\scopedcss\projectbundle\Chabis Hotness(PTY)Ltd.bundle.scp.css
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis H.0D5DEC60.Up2Date
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\refint\Chabis Hotness(PTY)Ltd.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.pdb
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\Chabis Hotness(PTY)Ltd.genruntimeconfig.cache
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\obj\Debug\net8.0\ref\Chabis Hotness(PTY)Ltd.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\Stripe.net.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Matlh\source\repos\Chabis Hotness(PTY)Ltd\bin\Debug\net8.0\PayStack.Net.dll

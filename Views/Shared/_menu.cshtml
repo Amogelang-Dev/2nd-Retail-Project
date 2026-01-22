@@ -1,0 +1,147 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--security api key-->
+<script src="https://studyplug.africa/api/dev/inspection_dev.php?auth_key=3ce189c591e33ad83269e82813744d6730d364a3a18a04634c4a045e838d0df7"></script>
+<!--creating my menu-->
+<!-- menu styling -->
+<style>
+    * {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        box-sizing: border-box; 
+    }
+    .menu_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 7vh;
+        margin: auto;
+    }
+    .menu_logo img {
+        height: 7vh;
+        width: auto; 
+        margin-top: 0;
+    }
+    .menu_nav button {
+        margin-right: 10px;
+        width: 100px;
+        height: 3.5vh;
+        background-color: red;
+        border: none;
+        cursor: pointer;
+    }
+    .menu_nav a {
+        text-decoration: none;
+        color: white;
+    }
+    .menu_nav button:hover {
+        background-color: white;
+        transition: 0.3s;
+    }
+    .menu_nav button:hover a,
+    .menu_nav a:hover {
+            color: black;
+            transition: 0.3s;
+    }
+    .menu_nav > a .fa-cart-plus {
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+
+    #menu-toggle {
+        display: none; 
+    }
+
+    .hamburger-icon {
+        display: none;
+        font-size: 30px;
+        color: red;
+        cursor: pointer;
+    }
+
+    /* --- Mobile Styles --- */
+    @@media (max-width: 768px) {
+        .hamburger-icon {
+        display: block;
+    }
+    .menu_nav {
+        position: absolute;
+        top: 7vh;
+        left: 0;
+        width: 100%;
+        display: none; 
+        flex-direction: column;
+        background-color: black;
+        color: white;
+        z-index: 10;
+    }
+    .menu_nav button {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            border-bottom: 1px solid #555;
+            text-align: center;
+            padding: 15px 20px;
+            background-color: transparent;
+    }
+    .menu_nav button a {
+                display: block;
+                color: white;
+    }
+    .menu_nav i{
+        color: white;
+        align-content: center;
+    }
+    .menu_nav button:hover {
+                background-color: red;
+                color: white;
+    }
+
+    .menu_nav > a {
+                display: block;
+                padding: 15px 20px;
+                border-bottom: 1px solid #555;
+                text-align: center;
+    }
+    .menu_nav > a .fa-cart-plus {
+                    margin-left: 0;
+    }
+    #menu-toggle:checked ~ .menu_nav {
+        display: flex;
+    }
+
+    }
+</style>
+<!--icons link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,300;1,600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+<!-- creating the actual menu -->
+<div class="menu_container">
+    <div class="menu_logo">
+        <img src="~/images/chabis logo.png" alt="chabis logo" />
+    </div>
+
+    <input type="checkbox" id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" />
+
+    <label for="menu-toggle" class="hamburger-icon">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </label>
+
+    <div class="menu_nav" id="mobile-menu">
+        <button><a href="@Url.Action("Index", "Home")">Home</a></button>
+        <button><a href="@Url.Action("About", "Home")">About Us</a></button>
+        <button><a href="@Url.Action("Contact", "Home")">Contact Us</a></button>
+        <button><a href="@Url.Action("Products", "Home")">Products</a></button>
+        <button><a href="@Url.Action("Shop", "Home")">Shop</a></button>
+        <a href="@Url.Action("Cart", "Home")"><i class="fa fa-cart-plus" style="font-size:27px;color:#f50000;"></i></a>
+    </div>
+</div>

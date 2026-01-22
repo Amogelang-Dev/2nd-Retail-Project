@@ -1,0 +1,373 @@
+﻿@*
+    This page displays the final order details and handles payment using Paystack.
+*@
+@model List<Chabis_Hotness_PTY_Ltd.Models.CartItem>
+@{
+	ViewData["Title"] = "Checkout";
+
+	// 1. Calculate the totals using Razor
+	decimal subtotal = Model.Sum(i => i.Price * i.Quantity);
+	decimal deliveryFee = 30;
+	decimal total = subtotal + deliveryFee;
+
+	// 2. Prepare the amount for Paystack (in Cents/Kobo - multiply by 100)
+	// Use Math.Round to prevent floating-point errors before casting to long.
+	long amountInKoboRazor = (long)Math.Round(total * 100);
+
+	// Retrieve Paystack Public Key and Customer Email from the Controller's ViewBag
+	string paystackPublicKey = ViewBag.PaystackPublicKey;
+	string customerEmail = ViewBag.CustomerEmail;
+}
+
+<style>
+	/* --- CSS STYLES COPIED AND PLACED HERE --- */
+	.cart-wrapper {
+		width: 90%;
+		margin: 30px auto;
+		font-family: Arial;
+	}
+
+	h1 {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	/* Cart table styling */
+
+	.cart-table {
+		width: 100%; /* full width */
+		border-collapse: collapse;
+		margin-bottom: 40px;
+	}
+
+		.cart-table th {
+			background: red;
+			color: white;
+			padding: 10px;
+			text-align: left;
+		}
+
+		.cart-table td {
+			padding: 12px;
+			border-bottom: 1px solid #ddd;
+		}
+
+	.product-cell {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.cart-img {
+		width: 60px;
+		border-radius: 6px;
+		flex-shrink: 0; /* Prevents image from shrinking */
+	}
+
+	.qty-input {
+		width: 55px;
+		padding: 5px;
+		text-align: center;
+		border-radius: 4px;
+		border: 1px solid #aaa;
+	}
+
+	.remove-btn {
+		padding: 6px 12px;
+		background: #cc0000;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		white-space: nowrap; /* Keep button text on one line */
+	}
+
+		.remove-btn:hover {
+			background: #aa0000;
+		}
+	/* Order summary below table, full width */
+
+	.cart-summary-full {
+		width: 97%; /* full width */
+		padding: 20px;
+		background: #f7f7f7;
+		border-radius: 12px;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		margin-top: 20px;
+	}
+
+	.summary-line, .summary-total {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+	}
+
+	.summary-total {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+
+	/* Used for the Pay Now button */
+	.checkout-btn {
+		display: block;
+		margin-top: 20px;
+		padding: 12px;
+		text-align: center;
+		background: #009933;
+		color: white;
+		text-decoration: none;
+		border-radius: 6px;
+		border: none;
+		cursor: pointer;
+	}
+
+		.checkout-btn:hover {
+			background: #007722;
+		}
+
+	.footer-container {
+		font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+		color: white;
+		background-color: black;
+		width: 100%;
+		height: 40vh;
+		justify-content: center;
+		display: flex;
+		flex-direction: column;
+		margin-top: 5rem;
+		text-align: center;
+		padding: 20px 0;
+	}
+
+	.footer-icons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
+		font-size: 20px;
+	}
+
+		.footer-icons a {
+			color: white;
+		}
+
+			.footer-icons a:hover i {
+				font-size: 25px;
+				transition: 0.3s;
+				color: red;
+			}
+
+	#payment-message {
+		text-align: center;
+		margin-top: 15px;
+		padding: 10px;
+		color: darkred;
+		font-weight: bold;
+	}
+
+
+	/* --- RESPONSIVENESS (Mobile-first approach for table) --- */
+
+	@@media screen and (max-width: 768px) {
+		.cart-wrapper {
+			width: 95%;
+			margin: 20px auto;
+		}
+
+		.cart-table {
+			border: 0;
+		}
+
+			.cart-table thead {
+				display: none;
+			}
+
+			.cart-table tr {
+				display: block;
+				margin-bottom: 15px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+				background-color: white;
+			}
+
+			.cart-table td {
+				display: block;
+				text-align: right;
+				padding: 8px 15px;
+				border-bottom: 0;
+				position: relative;
+			}
+
+				.cart-table td::before {
+					content: attr(data-label);
+					position: absolute;
+					left: 15px;
+					font-weight: bold;
+					text-transform: uppercase;
+					color: #555;
+				}
+
+		.product-cell {
+			padding: 15px;
+			border-bottom: 1px solid #eee;
+			justify-content: flex-start;
+		}
+		/* Assign data labels for responsiveness */
+		td:nth-of-type(1)::before {
+			content: 'Product:';
+		}
+
+		td:nth-of-type(2)::before {
+			content: 'Size:';
+		}
+
+		td:nth-of-type(3)::before {
+			content: 'Qty:';
+		}
+
+		td:nth-of-type(4)::before {
+			content: 'Price:';
+		}
+
+		td:nth-of-type(5)::before {
+			content: 'Total:';
+		}
+
+		.footer-container {
+			height: auto;
+			padding: 30px 10px;
+			margin-top: 3rem;
+		}
+	}
+	/* --- END OF CSS STYLES --- */
+</style>
+
+<div class="cart-wrapper">
+	<h1>Confirm Your Order</h1>
+
+	<!-- ORDER DETAILS TABLE (Using cart-table styles) -->
+	<table class="cart-table">
+		<thead>
+			<tr>
+				<th style="width: 40%">Product</th>
+				<th>Size</th>
+				<th>Qty</th>
+				<th>Price</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					@* Added product cell structure for image/name alignment, assuming CartItem has an Image property *@
+					<td class="product-cell" data-label="Product">
+						@* Placeholder image if actual image is unavailable or you need a mock *@
+						<img src="@item.Image" onerror="this.onerror=null; this.src='https://placehold.co/60x60/800000/ffffff?text=CH'" class="cart-img" />
+						<span>@item.Title</span>
+					</td>
+					<td data-label="Size">@item.Size</td>
+					<td data-label="Qty">@item.Quantity</td>
+					<td data-label="Price">R @item.Price</td>
+					<td data-label="Total">R @(item.Price* item.Quantity)</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<!-- ORDER SUMMARY AND PAYMENT BUTTON -->
+	<div class="cart-summary-full">
+		<h3>Final Order Summary</h3>
+
+		<p class="summary-line">
+			<span>Subtotal:</span>
+			<span>R @subtotal</span>
+		</p>
+		<p class="summary-line">
+			<span>Delivery Fee:</span>
+			<span>R @deliveryFee</span>
+		</p>
+
+		<p class="summary-total">
+			<span>Total to Pay:</span>
+			<span>R @total</span>
+		</p>
+
+		<br />
+
+		<h2>Payment</h2>
+		@* The Paystack button uses the .checkout-btn class for consistent styling *@
+		<button id="pay-button" onclick="payWithPaystack()" class="checkout-btn">
+			Pay Now R @total
+		</button>
+
+		<div id="payment-message"></div>
+	</div>
+</div>
+
+
+@section Scripts {
+	<!-- Paystack Inline SDK -->
+	<script src="https://js.paystack.co/v1/inline.js"></script>
+
+	<script>
+		function payWithPaystack() {
+			// Get the clean, server-side calculated values
+			const amountInKobo = @amountInKoboRazor; // e.g., 13000 for R130.00
+			const paystackPublicKey = "@paystackPublicKey";
+			const customerEmail = "@customerEmail";
+
+			const payButton = document.getElementById('pay-button');
+			const messageElement = document.getElementById("payment-message");
+
+			// --- 1. Basic Validation and Initial State ---
+			// This is the check that is failing. It means the server passed an empty or default value.
+			if (!paystackPublicKey || paystackPublicKey.length === 0 || paystackPublicKey.includes('paystackPublicKey')) {
+				// Modified message to be helpful
+				messageElement.textContent = "Error: Payment gateway key is missing or invalid. Check your C# Controller and appsettings.json configuration.";
+				payButton.disabled = false; // Ensure button is re-enabled if validation fails
+				return;
+			}
+			if (amountInKobo <= 0) {
+				 messageElement.textContent = "Error: Order total must be greater than zero.";
+				 payButton.disabled = false;
+				 return;
+			}
+
+			// Disable button and show message while initializing
+			payButton.disabled = true;
+			messageElement.textContent = "Initializing payment. Please wait...";
+
+			// --- 2. Initialize the Paystack handler ---
+			var handler = PaystackPop.setup({
+				key: paystackPublicKey,
+				email: customerEmail,
+				amount: amountInKobo,
+				currency: 'ZAR',
+
+				// Generates a unique reference for the transaction
+				ref: 'ORD-CHABIS-' + Math.floor((Math.random() * 1000000000) + 1),
+
+				// --- 3. Define the callback function on success ---
+				callback: function(response){
+					// Payment successful/completed. Redirect to the server for verification.
+					const reference = response.reference;
+					messageElement.textContent = "Payment successful. Verifying transaction...";
+
+					// Redirect to the PaymentCallback action in your HomeController
+					window.location.href = '@Url.Action("PaymentCallback", "Home")' + '?reference=' + reference;
+				},
+
+				// --- 4. Define function on close (e.g., if user cancels) ---
+				onClose: function(){
+					// Re-enable the button and reset message if user closed the popup
+					messageElement.textContent = 'Transaction cancelled. Click "Pay Now" to retry.';
+					payButton.disabled = false;
+				},
+			});
+
+			// --- 5. Open the Paystack popup ---
+			handler.openIframe();
+		}
+	</script>
+}

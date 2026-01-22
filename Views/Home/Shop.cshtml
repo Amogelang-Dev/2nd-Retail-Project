@@ -1,0 +1,385 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@Html.AntiForgeryToken()
+
+<!--internal styling-->
+<style>
+    .header-container {
+        width: 100%;
+        height: 40vh;
+        display: block;
+        background-image: url("/images/about-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: white;
+    }
+    .header-container h1 {
+            text-align: center;
+            margin-top: 8rem;
+    }
+    .product-label h1 {
+        text-align: center;
+    }
+    .product-label p {
+        text-align: center;
+    }
+    .product-container {
+        width: 100%;
+        height: 60vh; 
+        background-color: white;
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center;
+        text-align: center;
+        padding: 20px 0;
+        height: auto; 
+    }
+    .product-content {
+        width: 15%; 
+        height: 60vh;
+        border-radius: 10px;
+        background-color: red;
+        margin: 15px 2%; 
+        color: black;
+        padding-top: 10px;
+    }
+    .product-content hr {
+            width: 90%;
+            border-color: rgba(255, 255, 255, 0.5);
+    }
+    .product-content img {
+            width: 100%;
+            height: 30vh;
+            justify-content: center;
+            object-fit: contain;
+    }
+    .product-content h2 {
+            font-size: 18px;
+     }
+    .product-content select {
+            width: 60%;
+            height: 5vh;
+            border-color: black;
+            background-color: transparent;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            color: black; 
+            border: 1px solid white; 
+    }
+    .product-content select:hover {
+                color: black;
+                border-color: white;
+                transition: 1s;
+    }
+    .product-content option {
+            background-color: red;
+            color: white; 
+    }
+    .product-content button {
+            width: 60%;
+            height: 5vh;
+            background-color: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid white; 
+    }
+    .product-content button a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                line-height: 5vh;
+    }
+    .product-content button:hover {
+                background-color: white;
+                transition: 1s;
+    }
+    .product-content button:hover a {
+                    color: red; 
+    }
+
+    .footer-container {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        color: white;
+        background-color: black;
+        width: 100%;
+        height: 40vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+    }
+
+        .footer-icons a {
+            color: white;
+        }
+
+            .footer-icons a:hover i {
+                font-size: 25px;
+                transition: 0.3s;
+                color: red;
+            }
+
+    /*mobile responsiveness*/
+    @@media (max-width: 992px) {
+    .header-container h1{
+     margin-top: 6rem;
+    }
+    .product-container {
+        flex-direction: column; 
+        height: auto;
+    }
+    .product-content {
+        width: 90%; 
+        height: auto; 
+        margin: 15px auto; 
+        padding-bottom: 10px;
+    }
+    .product-content img {
+            height: 35vh;
+    }
+    .product-content select,
+    .product-content button {
+            width: 60%; 
+            margin-left: auto;
+            margin-right: auto;
+    }
+    .footer-container {
+        height: auto;
+        padding: 30px 10px;
+        margin-top: 3rem;
+    }
+    }
+</style>
+
+<!--header section-->
+<div class="header-container">
+    <!--menu link-->
+    @Html.Partial("_menu")
+    <h1>Our Products</h1>
+</div>
+
+<!--products section-->
+<div class="product-label">
+    <h1>Our garnish sauces</h1>
+    <p>AVAILABLE IN: 30ml cup, 100ml cup, 250ml bottle, 350ml Jar, 500ml Jar, 750ml Bottle, 1 litre bottle/ Jar and 5, 10 & 25 litre buckets.</p>
+
+</div>
+
+<div class="product-container">
+    <div class="product-content" data-product-id="1" data-image="/images/hot sauce.png">
+        <h2>Original Flavor: Hot</h2><hr />
+        <img src="/images/hot sauce.png" /><hr />
+        <select name="size" class="product-size-select styled-select">
+            <option value="" disabled selected>Select Size</option>
+            <option value="45ml - R8,00">45ml - R8,00</option>
+            <option value="125ml - R20,00">100ml - R20,00</option>
+            <option value="250ml - R40,00">250ml - R40,00</option>
+            <option value="250ml - R45,00">250ml - R45,00</option>
+            <option value="350ml - R50,00">350ml - R50,00</option>
+            <option value="500ml - R80,00">250ml - R80,00</option>
+            <option value="600ml - R99,00">250ml - R99,00</option>
+            <option value="1 litre - R150,00">1 litre - R150,00</option>
+            <option value="5 litre - R750,00">5 litre - R750,00</option>
+            <option value="10 litre - R1499,00">10 litre - R1499,00</option>
+            <option value="20 litre - R2999,00">20 litre - R2999,00</option>
+            <option value="25 litre - R3599,00">25 litre - R3599,00</option>
+        </select>
+        <button class="add-to-cart-btn" type="button">Add To Cart</button>
+    </div>
+    <div class="product-content" data-product-id="2">
+        <h2>Extra Hot flavor</h2><hr />
+        <img src="/images/extra hot sauce.png" /><hr />
+        <select name="size" class="product-size-select styled-select">
+            <option value="" disabled selected>Select Size</option>
+            <option value="45ml - R8,00">45ml - R8,00</option>
+            <option value="125ml - R20,00">100ml - R20,00</option>
+            <option value="250ml - R40,00">250ml - R40,00</option>
+            <option value="250ml - R45,00">250ml - R45,00</option>
+            <option value="350ml - R50,00">350ml - R50,00</option>
+            <option value="500ml - R80,00">250ml - R80,00</option>
+            <option value="600ml - R99,00">250ml - R99,00</option>
+            <option value="1 litre - R150,00">1 litre - R150,00</option>
+            <option value="5 litre - R750,00">5 litre - R750,00</option>
+            <option value="10 litre - R1499,00">10 litre - R1499,00</option>
+            <option value="20 litre - R2999,00">20 litre - R2999,00</option>
+            <option value="25 litre - R3599,00">25 litre - R3599,00</option>
+        </select>
+        <button class="add-to-cart-btn" type="button">Add To Cart</button>
+    </div>
+    <div class="product-content" data-product-id="3">
+        <h2>Sweet Chillie flavour</h2><hr />
+        <img src="/images/sweet chili sauce.png" /><hr />
+        <select name="size" class="product-size-select styled-select">
+            <option value="" disabled selected>Select Size</option>
+            <option value="45ml - R8,00">45ml - R8,00</option>
+            <option value="125ml - R20,00">100ml - R20,00</option>
+            <option value="250ml - R40,00">250ml - R40,00</option>
+            <option value="250ml - R45,00">250ml - R45,00</option>
+            <option value="350ml - R50,00">350ml - R50,00</option>
+            <option value="500ml - R80,00">250ml - R80,00</option>
+            <option value="600ml - R99,00">250ml - R99,00</option>
+            <option value="1 litre - R150,00">1 litre - R150,00</option>
+            <option value="5 litre - R750,00">5 litre - R750,00</option>
+            <option value="10 litre - R1499,00">10 litre - R1499,00</option>
+            <option value="20 litre - R2999,00">20 litre - R2999,00</option>
+            <option value="25 litre - R3599,00">25 litre - R3599,00</option>
+        </select>
+        <button class="add-to-cart-btn" type="button">Add To Cart</button>
+    </div>
+    <div class="product-content" data-product-id="4">
+        <h2>Garlic & Ginger flavour</h2><hr />
+        <img src="/images/Garlic & Ginger sauce.png" /><hr />
+        <select name="size" class="product-size-select styled-select">
+            <option value="" disabled selected>Select Size</option>
+            <option value="45ml - R8,00">45ml - R8,00</option>
+            <option value="125ml - R20,00">100ml - R20,00</option>
+            <option value="250ml - R40,00">250ml - R40,00</option>
+            <option value="250ml - R45,00">250ml - R45,00</option>
+            <option value="350ml - R50,00">350ml - R50,00</option>
+            <option value="500ml - R80,00">250ml - R80,00</option>
+            <option value="600ml - R99,00">250ml - R99,00</option>
+            <option value="1 litre - R150,00">1 litre - R150,00</option>
+            <option value="5 litre - R750,00">5 litre - R750,00</option>
+            <option value="10 litre - R1499,00">10 litre - R1499,00</option>
+            <option value="20 litre - R2999,00">20 litre - R2999,00</option>
+            <option value="25 litre - R3599,00">25 litre - R3599,00</option>
+        </select>
+        <button class="add-to-cart-btn" type="button">Add To Cart</button>
+    </div>
+    <div class="product-content" data-product-id="5">
+        <h2>Lemon & Herb flavour</h2><hr />
+        <img src="/images/lemon and herb sauce.png" /><hr />
+        <select name="size" class="product-size-select styled-select">
+            <option value="" disabled selected>Select Size</option>
+            <option value="45ml - R8,00">45ml - R8,00</option>
+            <option value="125ml - R20,00">100ml - R20,00</option>
+            <option value="250ml - R40,00">250ml - R40,00</option>
+            <option value="250ml - R45,00">250ml - R45,00</option>
+            <option value="350ml - R50,00">350ml - R50,00</option>
+            <option value="500ml - R80,00">250ml - R80,00</option>
+            <option value="600ml - R99,00">250ml - R99,00</option>
+            <option value="1 litre - R150,00">1 litre - R150,00</option>
+            <option value="5 litre - R750,00">5 litre - R750,00</option>
+            <option value="10 litre - R1499,00">10 litre - R1499,00</option>
+            <option value="20 litre - R2999,00">20 litre - R2999,00</option>
+            <option value="25 litre - R3599,00">25 litre - R3599,00</option>
+        </select>
+        <button class="add-to-cart-btn" type="button">Add To Cart</button>
+    </div>
+</div>
+
+<!--footer section-->
+<div class="footer-container">
+    <h2>About Us</h2>
+    <p>
+        Chabis Hotness,<br />
+        Stirring up bold flavors and fiery passion in every jar—taste the difference with our chillies..
+    </p>
+    <div class="footer-icons">
+        <a href="https://www.facebook.com/mmadichabasharolmolate" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/chabis.hotness" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/+27625805348" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <p>copyright <i class="fa fa-copyright" style="font-size:15px;color:#ffffff;"></i> 2025, Chabis Hotness | Created by SyreTech SOLUTIONS</p>
+</div>
+
+<!--script to allow adding items to the cart-->
+<script>
+    function displayCustomMessage(title, message) {
+        let msgBox = document.getElementById('custom-message-box');
+
+        if (!msgBox) {
+            msgBox = document.createElement('div');
+            msgBox.id = 'custom-message-box';
+            msgBox.style.cssText =
+                'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); ' +
+                'background-color: #333; color: white; padding: 20px; border-radius: 8px; ' +
+                'z-index: 1000; text-align: center; opacity: 0; transition: opacity .3s;';
+            document.body.appendChild(msgBox);
+        }
+
+        msgBox.innerHTML =
+            `<h3>${title}</h3>
+             <p>${message}</p>
+             <button id="msg-ok-btn">OK</button>`;
+
+        document.getElementById("msg-ok-btn").onclick = () => {
+            msgBox.style.opacity = '0';
+        };
+
+        msgBox.style.opacity = '1';
+    }
+
+
+    async function handleAddToCartClick() {
+
+        const product = this.closest('.product-content');
+        const productId = product.getAttribute('data-product-id');
+        const title = product.querySelector('h2').textContent.trim();
+        const sizeSelect = product.querySelector('.product-size-select');
+
+        if (!sizeSelect.value) {
+            displayCustomMessage("Select Size", "Please select a size before adding.");
+            return;
+        }
+
+        const [size, priceText] = sizeSelect.value.split(" - ");
+        const price = parseFloat(priceText.replace("R", "").replace(",", "."));
+
+        const item = {
+    ProductId: productId,
+    Title: title,
+    Size: size,
+    Price: price,
+    Quantity: 1,
+    Image: product.querySelector('img').src
+        };
+
+        const token = document.querySelector("input[name='__RequestVerificationToken']").value;
+
+        try {
+            const response = await fetch("@Url.Action("AddItemToCart", "Home")", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "RequestVerificationToken": token
+                },
+                body: JSON.stringify(item)
+            });
+
+            if (response.ok) {
+                displayCustomMessage("Added!", `${title} (${size}) added to cart.`);
+            } else {
+                displayCustomMessage("Error", "Server rejected the request.");
+            }
+
+        } catch {
+            displayCustomMessage("Network Error", "Could not connect.");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".add-to-cart-btn")
+            .forEach(btn => btn.addEventListener("click", handleAddToCartClick));
+    });
+</script>
+

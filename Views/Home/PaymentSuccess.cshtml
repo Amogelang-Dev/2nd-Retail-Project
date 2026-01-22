@@ -1,0 +1,98 @@
+﻿@*
+    This page is shown after a successful, verified Paystack transaction.
+    The cart is cleared, and the user sees their confirmation details.
+*@
+@{
+    ViewData["Title"] = "Order Confirmed";
+    string orderRef = ViewBag.OrderReference;
+}
+
+<style>
+    /* Basic styling for the success page to match the clean checkout look */
+    .success-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 12px;
+        background-color: #f0fff0; /* Light green background */
+        border: 2px solid #009933;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 153, 51, 0.2); /* Green shadow */
+        font-family: Arial, sans-serif;
+    }
+
+    .success-icon {
+        color: #009933;
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .success-title {
+        color: #009933;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .success-message {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .reference-box {
+        background-color: #e0ffe0;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border: 1px solid #c0ffc0;
+        display: inline-block;
+    }
+
+        .reference-box strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #007722;
+            margin-top: 5px;
+            word-break: break-all; /* Ensures long references wrap */
+        }
+
+    .continue-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        text-align: center;
+        background: #cc0000; /* Use your brand color */
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+    }
+
+        .continue-btn:hover {
+            background: #aa0000;
+        }
+</style>
+
+<div class="success-container">
+    <!-- Using a common checkmark symbol (✓) or emoji for visual success -->
+    <div class="success-icon">✓</div>
+
+    <h1 class="success-title">Order Confirmed!</h1>
+
+    <p class="success-message">
+        Thank you for your purchase from Chabis Hotness PTY Ltd. Your payment was successfully processed.
+        We've already started preparing your hot sauces!
+    </p>
+
+    <div class="reference-box">
+        <p>Your Order Reference:</p>
+        <strong>@orderRef</strong>
+    </div>
+
+    <a href="@Url.Action("Shop", "Home")" class="continue-btn">
+        Continue Shopping
+    </a>
+</div>

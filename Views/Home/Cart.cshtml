@@ -1,0 +1,361 @@
+﻿@model List<Chabis_Hotness_PTY_Ltd.Models.CartItem>
+@Html.AntiForgeryToken()
+
+<style>
+    .cart-wrapper {
+        width: 90%;
+        margin: 30px auto;
+        font-family: Arial;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    /* Cart table styling */
+
+    .cart-table {
+        width: 100%; /* full width */
+        border-collapse: collapse;
+        margin-bottom: 40px;
+    }
+
+        .cart-table th {
+            background: red;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .cart-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .product-cell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .cart-img {
+        width: 60px;
+        border-radius: 6px;
+        flex-shrink: 0; /* Prevents image from shrinking */
+    }
+
+    .qty-input {
+        width: 55px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid #aaa;
+    }
+
+    .remove-btn {
+        padding: 6px 12px;
+        background: #cc0000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        white-space: nowrap; /* Keep button text on one line */
+    }
+
+        .remove-btn:hover {
+            background: #aa0000;
+        }
+    /* Order summary below table, full width */
+
+    .cart-summary-full {
+        width: 97%; /* full width */
+        padding: 20px;
+        background: #f7f7f7;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+
+    .summary-line, .summary-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .summary-total {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .checkout-btn {
+        display: block;
+        margin-top: 20px;
+        padding: 12px;
+        text-align: center;
+        background: #009933;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+
+        .checkout-btn:hover {
+            background: #007722;
+        }
+
+    .footer-container {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        color: white;
+        background-color: black;
+        width: 100%;
+        height: 40vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+    }
+
+        .footer-icons a {
+            color: white;
+        }
+
+            .footer-icons a:hover i {
+                font-size: 25px;
+                transition: 0.3s;
+                color: red;
+            }
+
+    /* --- RESPONSIVENESS (Mobile-first approach for table) --- */
+
+    /* Hide table header rows and transform table into a list-like display */
+    @@media screen and (max-width: 768px) {
+        .cart-wrapper {
+            width: 95%; /* Take up more width on small screens */
+            margin: 20px auto;
+        }
+
+        .cart-table {
+            border: 0;
+        }
+
+            .cart-table thead {
+                display: none; /* Hide header row */
+            }
+
+            .cart-table tr {
+                display: block; /* Treat each row as a block */
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                background-color: white;
+            }
+
+            .cart-table td {
+                display: block; /* Treat each cell as a block */
+                text-align: right;
+                padding: 8px 15px;
+                border-bottom: 0; /* Remove borders between cells */
+                position: relative;
+            }
+                /* Add a label before the content of each cell */
+                .cart-table td::before {
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 15px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: #555;
+                }
+
+        .product-cell {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            justify-content: flex-start;
+        }
+        /* Specific adjustments for input/button cells */
+        td:nth-of-type(4) { /* Qty cell */
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            td:nth-of-type(4)::before {
+                content: 'Qty:';
+            }
+
+        td:nth-of-type(6) { /* Remove button cell */
+            text-align: center;
+            padding: 15px;
+            background: #fcfcfc;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-container {
+            height: auto;
+            padding: 30px 10px;
+            margin-top: 3rem;
+        }
+    }
+</style>
+
+<div class="cart-wrapper">
+    <h1>Your Shopping Cart</h1>
+
+    <!-- CART TABLE -->
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody id="cart-items-body">
+            @foreach (var item in Model)
+            {
+                <tr class="cart-row" data-id="@item.ProductId" data-size="@item.Size">
+                    <td class="product-cell">
+                        <img src="@item.Image" class="cart-img" />
+                        <span>@item.Title</span>
+                    </td>
+
+                    <td>@item.Size</td>
+
+                    <td>R @item.Price</td>
+
+                    <td>
+                        <input type="number"
+                               class="qty-input"
+                               value="@item.Quantity"
+                               min="1"
+                               onchange="updateQuantity('@item.ProductId', '@item.Size', this.value)" />
+                    </td>
+
+                    <td class="item-total">R @(item.Price* item.Quantity)</td>
+
+                    <td>
+                        <button class="remove-btn"
+                                onclick="removeFromCart('@item.ProductId','@item.Size')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- ORDER SUMMARY BELOW TABLE -->
+    <div class="cart-summary-full">
+        <h3>Order Summary</h3>
+
+        @* Calculate subtotal *@
+        @{
+            var subtotal = 0m;
+            foreach (var x in Model)
+            {
+                subtotal += x.Price * x.Quantity;
+            }
+        }
+
+        <p class="summary-line">
+            <span>Subtotal:</span>
+            <span id="cart-subtotal">R @subtotal</span>
+        </p>
+
+        <p class="summary-line">
+            <span>Delivery Fee:</span>
+            <span id="cart-delivery-fee">R 30</span>
+        </p>
+
+        <p class="summary-total">
+            <span>Total:</span>
+            <span id="cart-total">R @(subtotal + 30)</span>
+        </p>
+
+        <a href="@Url.Action("Checkout", "Home")" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+</div>
+
+<style>
+    /* ... paste your existing styles from earlier here ... */
+</style>
+
+<script>
+    async function removeFromCart(productId, size) {
+        const response = await fetch('@Url.Action("RemoveFromCart", "Home")', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ProductId: productId, Size: size })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            const row = document.querySelector(`.cart-row[data-id='${productId}'][data-size='${size}']`);
+            if (row) row.remove();
+            recalcCartTotals();
+        }
+    }
+
+    async function updateQuantity(productId, size, value) {
+        value = parseInt(value);
+        if (isNaN(value) || value < 1) value = 1;
+
+        const response = await fetch('@Url.Action("UpdateCartQuantity", "Home")', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ProductId: productId, Size: size, Quantity: value })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            const row = document.querySelector(`.cart-row[data-id='${productId}'][data-size='${size}']`);
+            row.querySelector('.item-total').innerText = 'R ' + result.itemTotal.toFixed(2);
+            recalcCartTotals();
+        }
+    }
+
+    function recalcCartTotals() {
+        let subtotal = 0;
+        document.querySelectorAll('.item-total').forEach(el => {
+            subtotal += parseFloat(el.innerText.replace('R','').trim());
+        });
+
+        document.getElementById('cart-subtotal').innerText = 'R ' + subtotal.toFixed(2);
+        document.getElementById('cart-total').innerText = 'R ' + (subtotal + 30).toFixed(2);
+    }
+</script>
+
+<!--footer section-->
+<div class="footer-container">
+    <h2>About Us</h2>
+    <p>
+        Chabis Hotness,<br />
+        Stirring up bold flavors and fiery passion in every jar—taste the difference with our chillies..
+    </p>
+    <div class="footer-icons">
+        <a href="https://www.facebook.com/mmadichabasharolmolate" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/chabis.hotness" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/+27625805348" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <p>copyright <i class="fa fa-copyright" style="font-size:15px;color:#ffffff;"></i> 2025, Chabis Hotness | Created by SyreTech SOLUTIONS</p>
+</div>

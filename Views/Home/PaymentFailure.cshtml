@@ -1,0 +1,75 @@
+﻿@*
+    This page is shown if Paystack verification fails or is cancelled.
+*@
+@{
+    ViewData["Title"] = "Payment Failed";
+    // This line safely retrieves the error message set in HomeController.cs or uses a default message.
+    string message = ViewBag.Message ?? "The transaction could not be completed. Please try again or contact support.";
+}
+
+<style>
+    /* Styling for the failure page */
+    .failure-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 12px;
+        background-color: #fff0f0; /* Light red background */
+        border: 2px solid #cc0000;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(204, 0, 0, 0.2); /* Red shadow */
+        font-family: Arial, sans-serif;
+    }
+
+    .failure-icon {
+        color: #cc0000;
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .failure-title {
+        color: #cc0000;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .failure-message {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .retry-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        text-align: center;
+        background: #009933; /* Green for retry */
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+    }
+
+        .retry-btn:hover {
+            background: #007722;
+        }
+</style>
+
+<div class="failure-container">
+    <!-- Using a common cross symbol (X) or emoji for visual failure -->
+    <div class="failure-icon">X</div>
+
+    <h1 class="failure-title">Payment Failed</h1>
+
+    <p class="failure-message">
+        @message
+    </p>
+
+    <a href="@Url.Action("Checkout", "Home")" class="retry-btn">
+        Retry Payment
+    </a>
+</div>

@@ -1,0 +1,353 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!--internal styling-->
+<style>
+    /*header*/
+    .header {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        color: white;
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+    }
+    .text-box {
+        width: 90%;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    .text-box h1 {
+            font-size: 62px;
+    }
+    .text-box p {
+            margin: 10px 0 40px;
+            font-size: 14px;
+            color: #fff;
+    }
+    .text-box button {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            padding: 12px 34px;
+            font-size: 13px;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+    }
+    .text-box button:hover {
+                border: 1px solid lightblue;
+                background-color: red;
+                transition: 1s;
+    }
+
+    /*video background*/
+    .video {
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+    }
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
+    }
+    .content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+    .text-box a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /*products section style*/
+    .products-header {
+        color: black;
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+    }
+    .products-header h1 {
+            text-align: center;
+    }
+    .products-header p {
+            text-align: center;
+            margin-top: 0;
+    }
+
+    /* Desktop View: Inline flex layout for products */
+    .products-container {
+        background-color: white;
+        width: 100%;
+        height: 50vh;
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .products-content {
+        background-color: red;
+        width: 20%;
+        height: 40vh;
+        margin: 0 1.5%; 
+        border-radius: 15px;
+    }
+    .products-content img {
+            justify-content: center;
+            width: 100%;
+            height: 30vh;
+            margin-top: 0;
+            object-fit: cover; /* Added for image scaling */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+    }
+    .products-content hr {
+            width: 90%;
+    }
+    .products-content h2 {
+            text-align: center;
+            font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+            color: white; /* Added color for readability on red background */
+            font-size: 16px;
+            margin-top: 10px;
+    }
+    .products-container button {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        margin-top: 2rem;
+        color: black;
+        border-radius: 5px;
+        background-color: transparent;
+        width: 15%;
+        height: 5vh;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    .products-container button:hover {
+            background-color: red;
+            color: white;
+            transition: 0.3s;
+    }
+    .products-container button a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            line-height: 5vh; /* Center text vertically in button */
+    }
+    .products-container button:hover a {
+            color: white;
+            background-color: transparent; /* Prevent background change on inner 'a' tag */
+            transition: 0.3s;
+    }
+    /* Contact Section Styles */
+    .contact-container {
+        width: 70%;
+        height: 35vh;
+        border-radius: 10px;
+        background-image: url("images/chili.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        margin: 3rem auto 0 auto; /* Center with auto margin */
+        text-align: center; /* Center text inside the container */
+        padding: 20px;
+    }
+    .contact-container h1 {
+            text-align: center;
+            margin-top: 0; /* Adjusted for centering */
+            margin-left: 0;
+            font-size: 28px;
+    }
+    .contact-container button {
+            height: 5vh;
+            width: 15%;
+            border-radius: 5px;
+            margin-bottom: 0;
+            color: white;
+            border: 1px solid white;
+            background-color: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 0;
+    }
+    .contact-container button:hover {
+                background-color: red;
+                transition: 0.3s;
+    }
+    .contact-container button a {
+                text-decoration: none;
+                color: white;
+                display: block;
+                line-height: 5vh;
+    }
+    /* Footer Section Styles */
+    .footer-container {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        color: white;
+        background-color: black;
+        width: 100%;
+        height: 40vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+    }
+    .footer-icons a {
+            color: white;
+            text-decoration: none;
+    }
+    .footer-icons a:hover i {
+                font-size: 25px;
+                transition: 0.3s;
+                color: red;
+    }
+    .footer-icons i {
+            transition: 0.3s;
+    }
+    /*mobile responsiveness*/
+    @@media (max-width: 768px) {
+    .products-container{
+        flex-direction: column;
+        height: auto; 
+    }
+    .products-content {
+        width: 90%;
+        height: 45vh; 
+        margin: 20px auto; 
+    }
+    .products-content img {
+            height: 30vh;
+    }
+    .products-container button {
+        width: 50%; 
+        margin: 1rem auto 3rem auto; 
+    }
+    .contact-container {
+        width: 90%;
+        height: auto; 
+        padding: 30px 10px;
+        margin: 3rem auto;
+    }
+    .contact-container h1 {
+            font-size: 24px;
+    }
+    .contact-container button {
+            width: 40%;
+    }
+    .text-box h1 {
+        font-size: 40px;
+    }
+    .footer-container {
+        height: auto;
+        padding: 30px 10px;
+    }
+    .footer-icons {
+        margin: 15px 0;
+    }
+
+    }
+</style>
+
+
+<!--header section-->
+<div class="header">
+    <!--partial menu link-->
+    @Html.Partial("_menu")
+    <!-- video background -->
+    <div class="video">
+        <video class="video-background" autoplay muted loop>
+            <source src="images/video-vmake.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="text-box">
+        <center>
+            <h1>Welcome to Chabis Hotness</h1><br>
+            <p>
+                At Chabis Hotness, we are passionate innovators dedicated to crafting exceptional Chili Sauces that ignite your taste buds and elevate your dining experience.<br> With a bold commitment to quality and a flair for the extraordinary, we take pride in being pioneers in the world of flavor.<br> From the rich soils of South Africa's finest farms to your table, our sauces embody a blend of tradition and innovation, delivering an unmatched taste sensation in every drop.<br> Whether it's a mild kick or a fiery burst, our products are crafted with precision and care, turning every meal into a culinary adventure.<br>
+                At Chabis Hotness, we believe in embracing the heat of challenges and transforming them into opportunities for flavorful success. Join us as we redefine the art of chili sauces, setting new standards for taste and quality. Your flavor journey is our mission, and together, we'll spice up your world like never before.
+            </p>
+            <button><a href="@Url.Action("About", "Home")">visit us to know more</a></button>
+        </center>
+    </div>
+</div>
+
+<!--products section-->
+<div class="products-header">
+    <h1>few of our garnish sauces</h1>
+    <p>AVAILABLE IN: 30ml cup, 100ml cup, 250ml bottle, 350ml Jar, 500ml Jar, 750ml Bottle, 1 litre bottle/ Jar and 5, 10 & 25 litre buckets.</p>
+</div>
+<div class="products-container">
+    <div class="products-content">
+        <h2>Original Flavor: Hot</h2><hr />
+        <img src="images/hot sauce.png" />
+    </div>
+    <div class="products-content">
+        <h2>Extra Hot flavor</h2><hr />
+        <img src="images/extra hot sauce.png" />
+    </div>
+    <div class="products-content">
+        <h2>Sweet Chillie flavour</h2><hr />
+        <img src="images/sweet chili sauce.png" />
+    </div>
+    <div class="products-content">
+        <h2>Lemon & Herb flavour</h2><hr />
+        <img src="images/lemon and herb sauce.png" />
+    </div>
+    <button><a href="@Url.Action("Products", "Home")">view our products</a></button>
+</div>
+
+<!--contact us section-->
+<div class="contact-container">
+    <h1>
+        Contact us from anywhere in South Africa<br />
+        And we will be pleased to assist you.
+    </h1>
+    <button><a href="@Url.Action("Contact", "Home")">contact us</a></button>
+</div>
+
+<!--footer section-->
+<div class="footer-container">
+    <h2>About Us</h2>
+    <p>
+        Chabis Hotness,<br/>
+        Stirring up bold flavors and fiery passion in every jar—taste the difference with our chillies..
+    </p>
+    <div class="footer-icons">
+    <a href="https://www.facebook.com/mmadichabasharolmolate" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.instagram.com/chabis.hotness" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+        <a href="https://wa.me/+27625805348" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    </div>
+    <p>copyright <i class="fa fa-copyright" style="font-size:15px;color:#ffffff;"></i> 2025, Chabis Hotness | Created by SyreTech SOLUTIONS</p>
+</div>

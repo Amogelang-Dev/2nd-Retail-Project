@@ -1,0 +1,222 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--internal styling-->
+<style>
+    .header-container {
+        width: 100%;
+        height: 40vh;
+        display: block;
+        background-image: url("/images/about-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: white;
+    }
+    .header-container h1 {
+            text-align: center;
+            margin-top: 8rem;
+    }
+    .product-label h1 {
+        text-align: center;
+    }
+    .product-label p {
+        text-align: center;
+    }
+    .product-container {
+        width: 100%;
+        height: 70vh; 
+        background-color: white;
+        display: flex;
+        color: black;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding: 20px 0; 
+        height: auto; 
+    }
+    .product-content {
+        width: 15%; 
+        height: 65vh; 
+        text-align: center;
+        border-radius: 10px;
+        background-color: red;
+        margin: 2% 2%; 
+        color: black; 
+        padding-top: 10px;
+    }
+    .product-content hr {
+            width: 90%;
+            border-color: rgba(255, 255, 255, 0.5);
+     }
+     .product-content img {
+            width: 100%;
+            height: 30vh;
+            justify-content: center;
+            object-fit: contain; 
+     }
+     .product-content p {
+            font-size: 13px;
+            padding: 5px 10px;
+     }
+     .product-content h2 {
+            font-size: 18px;
+     }
+     .product-content button {
+            width: 60%;
+            height: 5vh;
+            background-color: transparent;
+            border: 1px solid white; 
+            border-radius: 5px;
+            cursor: pointer;
+     }
+     .product-content button a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                line-height: 5vh;
+     }
+     .product-content button:hover {
+                color: black; 
+                background-color: white;
+                border-color: white;
+                transition: 0.3s;
+     }
+     .product-content button:hover a {
+                    color: red;
+     }
+    .footer-container {
+        font-family: 'Poppins', sans-serif, 'Roboto Condensed', sans-serif;
+        color: white;
+        background-color: black;
+        width: 100%;
+        height: 40vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .footer-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+    }
+    .footer-icons a {
+            color: white;
+    }
+    .footer-icons a:hover i {
+                font-size: 25px;
+                transition: 0.3s;
+                color: red;
+    }
+    .footer-icons i {
+            transition: 0.3s;
+    }
+
+    /*mobile responsiveness*/
+    @@media (max-width: 992px) {
+        .header-container h1{
+        margin-top: 6rem;
+        font-size: 36px;
+    }
+    .product-container {
+        flex-direction: column;
+        height: auto; 
+        padding: 10px 0;
+    }
+    .product-content {
+        width: 90%;
+        height: auto; 
+        margin: 15px auto; 
+        padding-bottom: 10px;
+    }
+    .product-content img {
+            height: 35vh;
+            object-fit: contain;
+    }
+    .product-content button {
+            width: 50%;
+            margin: 10px auto 0 auto;
+    }
+    .footer-container {
+        height: auto;
+        padding: 30px 10px;
+        margin-top: 3rem;
+    }
+    }
+</style>
+
+<!--header section-->
+<div class="header-container">
+    <!--menu link-->
+    @Html.Partial("_menu")
+    <h1>Our Products</h1>
+</div>
+
+<!--products section-->
+<div class="product-label">
+    <h1>Our garnish sauces</h1>
+    <p>AVAILABLE IN: 30ml cup, 100ml cup, 250ml bottle, 350ml Jar, 500ml Jar, 750ml Bottle, 1 litre bottle/ Jar and 5, 10 & 25 litre buckets.</p>
+
+</div>
+
+<div class="product-container">
+    <div class="product-content">
+        <h2>Original Flavor: Hot</h2><hr />
+        <img src="/images/hot sauce.png" /><hr />
+        <p>Ingredients: Vinaigrette, sunflower oil, fresh green & red chillie peppers*, fresh ground powder spices, herbs and sodium chloride.*(Organic)</p>
+        <button><a href="@Url.Action("Shop","Home")">Shop</a></button>
+    </div>
+    <div class="product-content">
+        <h2>Extra Hot flavor</h2><hr />
+        <img src="/images/extra hot sauce.png" /><hr />
+        <p>Ingredients: Vinaigrette, sunflower oil, fresh green, red & habanero chillie peppers*, fresh ground powder spices, herbs and sodium chloride. *(Organic)</p>
+        <button><a href="@Url.Action("Shop", "Home")">Shop</a></button>
+    </div>
+    <div class="product-content">
+        <h2>Sweet Chillie flavour</h2><hr />
+        <img src="/images/sweet chili sauce.png" /><hr />
+        <p>Ingredients: Vinaigrette, sunflower oil, fresh green chillie peppers*, fresh ground powder spices, refined chutney and sodium chloride. *(Organic)</p>
+        <button><a href="@Url.Action("Shop", "Home")">Shop</a></button>
+    </div>
+    <div class="product-content">
+        <h2>Garlic & Ginger flavour</h2><hr />
+        <img src="/images/Garlic & Ginger sauce.png" /><hr />
+        <p>Ingredients: Vinaigrette, sunflower oil, fresh green chillie peppers*, fresh ground powder spices, garlic*, ginger* and sodium chloride.*(Organic)</p>
+        <button><a href="@Url.Action("Shop", "Home")">Shop</a></button>
+    </div>
+    <div class="product-content">
+        <h2>Lemon & Herb flavour</h2><hr />
+        <img src="/images/lemon and herb sauce.png" /><hr />
+        <p>Ingredients: Vinaigrette, sunflower oil, fresh green chillie peppers*, fresh lemon & lime fruit, 100% lemon juice, fresh ground powder spices, herbs and sodium chloride. *(Organic)</p>
+        <button><a href="@Url.Action("Shop", "Home")">Shop</a></button>
+    </div>
+</div>
+
+<!--footer section-->
+<div class="footer-container">
+    <h2>About Us</h2>
+    <p>
+        Chabis Hotness,<br />
+        Stirring up bold flavors and fiery passion in every jar—taste the difference with our chillies..
+    </p>
+    <div class="footer-icons">
+        <a href="https://www.facebook.com/mmadichabasharolmolate" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/chabis.hotness" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/+27625805348" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <p>copyright <i class="fa fa-copyright" style="font-size:15px;color:#ffffff;"></i> 2025, Chabis Hotness | Created by SyreTech SOLUTIONS</p>
+</div>
+
